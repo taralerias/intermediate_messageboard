@@ -6,6 +6,7 @@ Intermediate::Application.routes.draw do
   # first created -> highest priority.
 
 root :to => 'home#index'
+resources :post, :only => [:index, :create, :new]
 
 
   # Sample of regular route:
