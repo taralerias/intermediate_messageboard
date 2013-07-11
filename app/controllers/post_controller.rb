@@ -8,9 +8,19 @@ class PostController < ApplicationController
   end
 
   def create
-  	@post = Post.create(params[:post])
-    flash[:notice] = "Your post was successfully created"
-    redirect_to post_index_path
+  	@post = Post.new(params[:post])
+    @post.user = current_user
+
+      if @post.save
+        flash[:notice] = "Your post was successfully created"
+        redirect_to post_index_path
+      else
+        flash[:notice] = "Your post was not created, you were missing fields."
+        render :action => 'new'
+        
+
+      end
+        
   	
   end
 

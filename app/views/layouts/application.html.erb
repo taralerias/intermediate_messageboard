@@ -12,7 +12,7 @@
 		    <a class="brand" href="#">Message Boards</a>
 		    <ul class="nav">
 		      <li class="active"><a href="/">Home</a></li>
-		      <li><a href="new">New Post</a></li>
+		      <li><%= link_to 'New Post', new_post_path %></li>
 		      <li><a href="#">Link</a></li>
 		    </ul>
 		      <p class="navbar-text pull-right">
@@ -24,7 +24,15 @@
 		      </p>
 		  </div>
 		</div>
+<% if flash[:notice] %>
+	<div class="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	    	<div class="notice"><%= flash[:notice] %></div>
+
+	</div>
+<% end %>
 <div class="well">
+
 
 	<%= yield %>
 		
